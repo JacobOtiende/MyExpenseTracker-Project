@@ -1,0 +1,37 @@
+﻿@page
+@model MyExpenseTracker.Pages.Transactions.IndexModel
+@{
+}
+
+<br>
+<h2>Transactions</h2>
+<a class="btn btn-primary btn -sm" href="/Transactions/Create">New Transaction</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Time</th>
+            <th>Icon</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Category</th>           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.transaction)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.created_at</td>
+                <td>@item.emoji</td>
+                <td>@item.description</td>
+                <td>@item.amount</td>
+                <td>@item.category</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Transactions/Edit?id=@item.id">Edit</a>
+                    <a class="btn btn-danger btn-sm" href="/Transactions/Delete?id=@item.id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
